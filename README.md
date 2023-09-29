@@ -7,7 +7,7 @@ Based on the PSA Special Release on the preliminary result of the 4th Quarter 20
 ## Features
 Due to the limited time available for the creation of this website database, members will only implement selected features from the proposal - with the consideration of applying information systems concepts. It has been decided that the following features on this website will include:
 
-* feature 1 - short description
+* Homepage - This page provides users an overview on site announcements, feautures, and offers that could be beneficial for their cattle management
 * feature 2 - short description
 * feature 3 - short description
 
@@ -16,4 +16,3 @@ Shown below is a mockup of the said website database.
 
 (placeholder)
 ![381652099_873714797424273_2925635500965045929_n](https://github.com/LeiAbllr/BSIS31-APPDEV/assets/91423384/ae4f7c89-8a18-4e92-98de-be1d4c41fbe8)
-
