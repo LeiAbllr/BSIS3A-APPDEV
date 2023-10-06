@@ -7,35 +7,38 @@
 
 header{
     width: 100%;
-    height: 55px;
+    height: 61px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+    position: fixed;
     z-index:99;
     box-shadow: 0 0 10px #000000;
 }
 
 header .logo{
     flex: 1;
-    margin-left: 5px;
-    margin-top: 5px;
     cursor: pointer;
+    max-width: 4%;
+    height: auto;
+    transform: scale(0.2);
+    position: relative;
+    top:-1px;
 } 
 
 header .navigation{
     display:flex;
     align-items: center;
-    padding: 20px 9%;
-    position: fixed;
+    padding: 20px 1%;
+    position: relative;
+    top: 3px;
+    left:93px;
 }
 
 .navigation ul{
     flex: 2;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-evenly;  
 }
 
 .navigation ul li{
@@ -48,13 +51,13 @@ header .navigation{
     color: #000000;
     font-weight: bold;
     text-transform: uppercase;
-    padding: 10px 15px;
+    padding: 10px 13px;
 }
 
 .navigation ul li a:hover{
     border-bottom:4px solid #754438;
     background:#f1f1f1;
-    padding-top: 22px;
+    padding-top: 26px;
     padding-bottom: 21px;
 
 }
@@ -62,12 +65,12 @@ header .navigation{
 header .searchbar{
     flex: 1;
     position: relative;
-    margin-right: 295px;
+    left: 7%;
 }
 
 .searchbar input{
-    width: 100%;
-    height: 35px;
+    width: 50%;
+    height: 27px;
     border: 2px solid #000000;
     border-radius: 5px;
     outline: none;
@@ -75,20 +78,21 @@ header .searchbar{
     color: #000000;
     font-size: 13px;
     text-align: left;
+    margin-top:6px;
 }
 
 .searchbar button{
     cursor: pointer;
-    width: 36px;
-    height: 35px;
+    width: 26px;
+    height: 27px;
     border: none;
     background:#ffffff;
     position: absolute;
     top: 0;
-    right: 0;
-    bottom: 0;
+    right: 421px;
     transform: scale(0.9);
     background: #000000;
+    margin-top:6px;
 }
 
 .searchbar i{
@@ -105,12 +109,14 @@ header .accounts{
     display:flex;
     align-items: center;
     padding: 20px 2%;
+    position: relative;
 }
 
 .accounts ul{
     flex: 2;
     display: flex;
     justify-content: space-evenly;
+    margin-top:6px;
 }
 
 .accounts ul li{
@@ -143,6 +149,7 @@ header .accounts{
   flex: 1 0 30%;
   scroll-snap-align: center;
 }
+
 
 @media (max-width: 600px) {
   .carousel-slide {
@@ -212,12 +219,14 @@ header .accounts{
 }
 
 
-body {
+/* gin comment ko lng kay feel ko dapat maubraa pgid div or idk kay gadala ang navigation bar sa size sang carousel kay nakabody */
+
+/* body {
   max-width: 130rem;
   margin: 0 auto;
   padding: 0 2rem;
   font-family: 'Lato', sans-serif;
-}
+}  */ 
 
 * {
   box-sizing: border-box;
@@ -280,7 +289,7 @@ li {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  background-image: url("car1.png");
+  background-image: url("C:\Users\Lei\OneDrive\Documents\GitHub\BSIS31-APPDEV\assets\misc\car1.png");
   background-repeat: no-repeat;
   counter-increment: item;
 }
@@ -289,7 +298,7 @@ li {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  background-image: url("car2.png");
+  background-image: url("C:\Users\Lei\OneDrive\Documents\GitHub\BSIS31-APPDEV\assets\misc\car2.png");
   background-repeat: no-repeat;
   counter-increment: item;
 }
@@ -298,7 +307,7 @@ li {
   position: relative;
   flex: 0 0 100%;
   width: 100%;
-  background-image: url("car 3.png");
+  background-image: url("C:\Users\Lei\OneDrive\Documents\GitHub\BSIS31-APPDEV\assets\misc\car 3.png");
   background-repeat: no-repeat;
   counter-increment: item;
 }
