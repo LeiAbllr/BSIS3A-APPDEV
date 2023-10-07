@@ -22,14 +22,13 @@
 
     }
 
-    /* Fixed Sticky Navbar */
     .navbar {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: white;
       box-shadow: 0 0 10px #000000;
-      z-index: 999; /* Ensure it's above other content */
+      z-index: 999;
       font-family: math;
     }
 
@@ -40,15 +39,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 10px 40px; /* Add padding for spacing */
+      padding: 10px 40px;
     }
 
     .navbar ul li {
       margin-right: 20px;
     }
 
-     .navbar a:hover {
-      color: lightblue; /* Change the color when hovered */
+    .navbar a:hover {
+      color: lightblue;
     }
 
     .navbar a {
@@ -60,7 +59,6 @@
       margin-right: 30px;
     }
 
-    /* Add custom styles for carousel indicators */
     .owl-dots {
       text-align: center;
       margin-top: 10px;
@@ -69,22 +67,22 @@
     .owl-dot {
       display: inline-block;
       margin: 0 5px;
-      width: 10px; /* Adjust the width of the indicator */
-      height: 10px; /* Adjust the height of the indicator */
-      border-radius: 50%; /* Create a round indicator */
-      background-color: #888; /* Color of the inactive indicator */
+      width: 10px;
+      height: 10px; 
+      border-radius: 50%;
+      background-color: #888; 
     }
 
     .owl-dot.active {
-      background-color: lightblue; /* Color of the active indicator */
+      background-color: lightblue; 
     }
   </style>
 </head>
+
 <body>
-  <!-- Fixed Sticky Navbar -->
   <div class="navbar">
     <ul style="font-size: 150%; width: 2000px; height: 100px;">
-      <li><img src="http://localhost/BSIS31-APPDEV/assets/logos/websitelogo.png" style="width: 40%; height: 40%; margin-left: -50%;"></li>
+      <li><a href="dump.html"><img src="http://localhost/BSIS31-APPDEV/assets/logos/websitelogo.png" style="width: 40%; height: 40%; margin-left: -50%;"></a></li>
       <li><a href="#home">Home</a></li>
       <li><a href="#news">News</a></li>
       <li><a href="#offers">Offers</a></li>
@@ -106,11 +104,9 @@
     </ul>
   </div>
 
-  <!-- Content -->
   <div id="header-placeholder" style="height: 60px;"></div>
   <div class="div1"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/div1.png" style="width: 1920px; height: 1080px;"></div>
 
-  <!-- Image Carousel -->
   <div id="myCarousel" class="owl-carousel owl-theme" style="margin-top:-2.7%;">
     <div class="item">
       <img src="http://localhost/BSIS31-APPDEV/assets/misc/car1.png" alt="Slide 1">
@@ -123,28 +119,26 @@
     </div>
   </div>
 
-  <!-- Carousel Indicator Container -->
   <div class="carousel-indicator">
     <div id="carousel-indicators"></div>
   </div>
 
-  <!-- Custom code to create carousel indicators below the image carousel -->
   <script>
     $(document).ready(function () {
       $("#myCarousel").owlCarousel({
-        items: 3, // Number of items to display at once
-        loop: true, // Infinite loop
-        margin: 30, // Space between items
-        nav: true, // Navigation arrows
-        autoplay: true, // Autoplay
-        autoplayTimeout: 3000, // Autoplay timeout in milliseconds
-        dots: false, // Do not display indicators
+        items: 3, 
+        loop: true, 
+        margin: 30, 
+        nav: true, 
+        autoplay: true, 
+        autoplayTimeout: 3000, 
+        dots: false,
       });
 
       var indicatorsContainer = $("#carousel-indicators");
       var slides = $("#myCarousel .owl-item");
       slides.each(function (index) {
-        if (index < 3) { // Display only 3 indicators
+        if (index < 3) { 
           var indicator = $("<div>").addClass("owl-dot");
           indicator.click(function () {
             $("#myCarousel").trigger("to.owl.carousel", index);
@@ -155,13 +149,12 @@
     });
   </script>
 
-  <!-- Your content here -->
-  <div class="IAm"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/IAm.png" style="margin-top: 4%; width: 1920px; height: 1080px;"></div>
+  <div class="IAm"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/IAm.png" style="width: 1920px; height: 1080px;"></div>
 
   <script>
     window.onscroll = function() { stickyHeader() };
 
-    var header = document.querySelector(".navbar"); // Update the selector
+    var header = document.querySelector(".navbar"); 
     var placeholder = document.getElementById("header-placeholder");
 
     var stickyOffset = header.offsetTop;
