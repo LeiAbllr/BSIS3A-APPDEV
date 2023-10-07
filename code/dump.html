@@ -18,44 +18,40 @@
     body {
       margin: 0;
       padding: 0;
+      text-align: center;
+
     }
 
-    header.sticky {
+    /* Fixed Sticky Navbar */
+    .navbar {
       position: fixed;
       top: 0;
       width: 100%;
       background-color: white;
       box-shadow: 0 0 10px #000000;
-      align-items: center;
-      height: 8%;
+      z-index: 999; /* Ensure it's above other content */
+      font-family: math;
     }
 
-    header {
-      position: fixed;
-      width: 100%;
-      height: 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .navbar ul,
-    .searchbar,
-    .accounts ul {
+    .navbar ul {
       list-style: none;
       padding: 0;
       margin: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px; /* Add padding for spacing */
     }
 
-    .navbar ul li,
-    .searchbar,
-    .accounts ul li {
-      display: inline;
+    .navbar ul li {
       margin-right: 20px;
     }
 
-    .navbar a,
-    .accounts a {
+     .navbar a:hover {
+      color: lightblue; /* Change the color when hovered */
+    }
+
+    .navbar a {
       text-decoration: none;
       color: #333;
     }
@@ -82,47 +78,37 @@
     .owl-dot.active {
       background-color: lightblue; /* Color of the active indicator */
     }
-
-    /* Style for the carousel indicator container */
-    .carousel-indicator {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px; /* Adjust the margin as needed */
-    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo"><img src="http://localhost/BSIS31-APPDEV/assets/logos/websitelogo.png" style="width: 25%; height: 25%; margin-left: 4%; margin-top: 1%;"></div>
-    <div class="navbar"> 
-      <nav>       
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#news">News</a></li>
-          <li><a href="#offers">Offers</a></li>
-          <li><a href="#aboutus">About us</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="searchbar">
-      <form action="">
-        <input type="text" name="search" id="srch" placeholder=" Search...">
-        <button type="submit"><i class="fas fa-search"></i></button>
-      </form>
-    </div>
-    <div class="accounts">
-      <nav class="acc">
-        <ul>
-          <li><a href="#logIn">Log in</a></li>
-          <li><a href="#signUp">Sign up</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Fixed Sticky Navbar -->
+  <div class="navbar">
+    <ul style="font-size: 150%; width: 2000px; height: 100px;">
+      <li><img src="http://localhost/BSIS31-APPDEV/assets/logos/websitelogo.png" style="width: 40%; height: 40%; margin-left: -50%;"></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#offers">Offers</a></li>
+      <li><a href="#aboutus">About us</a></li>
+      <li>
+        <form action="">
+          <input type="text" name="search" id="srch" placeholder=" Search...">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </form>
+      </li>
+      <li>
+        <nav class="acc">
+          <ul>
+            <li><a href="#logIn">Log in</a></li>
+            <li><a href="#signUp">Sign up</a></li>
+          </ul>
+        </nav>
+      </li>
+    </ul>
+  </div>
 
-  <div id="header-placeholder"></div>
-  <div class="div1"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/div1.png" style="margin-top: 4%; width: 1350px; height: 621px;"></div>
+  <!-- Content -->
+  <div id="header-placeholder" style="height: 60px;"></div>
+  <div class="div1"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/div1.png" style="width: 1920px; height: 1080px;"></div>
 
   <!-- Image Carousel -->
   <div id="myCarousel" class="owl-carousel owl-theme" style="margin-top:-2.7%;">
@@ -137,53 +123,45 @@
     </div>
   </div>
 
- <!-- Carousel Indicator Container -->
+  <!-- Carousel Indicator Container -->
   <div class="carousel-indicator">
     <div id="carousel-indicators"></div>
   </div>
 
   <!-- Custom code to create carousel indicators below the image carousel -->
-<script>
-  $(document).ready(function () {
-    $("#myCarousel").owlCarousel({
-      items: 3, // Number of items to display at once
-      loop: true, // Infinite loop
-      margin: 30, // Space between items
-      nav: true, // Navigation arrows
-      autoplay: true, // Autoplay
-      autoplayTimeout: 3000, // Autoplay timeout in milliseconds
-      dots: false, // Do not display indicators
+  <script>
+    $(document).ready(function () {
+      $("#myCarousel").owlCarousel({
+        items: 3, // Number of items to display at once
+        loop: true, // Infinite loop
+        margin: 30, // Space between items
+        nav: true, // Navigation arrows
+        autoplay: true, // Autoplay
+        autoplayTimeout: 3000, // Autoplay timeout in milliseconds
+        dots: false, // Do not display indicators
+      });
+
+      var indicatorsContainer = $("#carousel-indicators");
+      var slides = $("#myCarousel .owl-item");
+      slides.each(function (index) {
+        if (index < 3) { // Display only 3 indicators
+          var indicator = $("<div>").addClass("owl-dot");
+          indicator.click(function () {
+            $("#myCarousel").trigger("to.owl.carousel", index);
+          });
+          indicatorsContainer.append(indicator);
+        }
+      });
     });
+  </script>
 
-    var indicatorsContainer = $("#carousel-indicators");
-    var slides = $("#myCarousel .owl-item");
-    slides.each(function (index) {
-      if (index < 3) { // Display only 3 indicators
-        var indicator = $("<div>").addClass("owl-dot");
-        indicator.click(function () {
-          $("#myCarousel").trigger("to.owl.carousel", index);
-        });
-        indicatorsContainer.append(indicator);
-      }
-    });
-  });
-</script>
-
-
-
-  <!-- <div class="IAm">
-    <h1>Welcome to BAKA360</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget odio nec est iaculis luctus. Vivamus ut posuere dui, non hendrerit sapien.</p>
-    <p>Proin at metus vitae nisi mattis fermentum. Sed id nunc nec justo porttitor lacinia in non urna. Fusce et odio at libero mattis congue. Sed a diam at massa dignissim vehicula ac vel arcu.</p>
-  </div> -->
-
-   <div class="IAm"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/IAm.png" style="margin-top: 4%; width: 1350px; height: 621px;"></div>
-
+  <!-- Your content here -->
+  <div class="IAm"><img src="http://localhost/BSIS31-APPDEV/assets/pictures/IAm.png" style="margin-top: 4%; width: 1920px; height: 1080px;"></div>
 
   <script>
     window.onscroll = function() { stickyHeader() };
 
-    var header = document.querySelector("header");
+    var header = document.querySelector(".navbar"); // Update the selector
     var placeholder = document.getElementById("header-placeholder");
 
     var stickyOffset = header.offsetTop;
@@ -198,6 +176,5 @@
       }
     }
   </script>
-
 </body>
 </html>
