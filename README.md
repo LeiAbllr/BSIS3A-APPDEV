@@ -1,4 +1,4 @@
-# BSIS31-APPDEV
+# BSIS3A-APPDEV
 This repository contains the assets and codes for implementing a Firebase-powered website database called BAKA 360.
 
 ## Introduction
