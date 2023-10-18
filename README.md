@@ -1,4 +1,4 @@
-# BSIS31-APPDEV
+# BSIS3A-APPDEV
 This repository contains the assets and codes for implementing a Firebase-powered website database called BAKA 360.
 
 ## Introduction
@@ -8,8 +8,9 @@ Based on the PSA Special Release on the preliminary result of the 4th Quarter 20
 Due to the limited time available for the creation of this website database, members will only implement selected features from the proposal - with the consideration of applying information systems concepts. It has been decided that the following features on this website will include:
 
 * Homepage - This page provides users an overview on site announcements, feautures, and offers that could be beneficial for their cattle management
-* feature 2 - short description
-* feature 3 - short description
+* News- related livestock and new trends - This feature will give some updates or news about cattle management new approaches.
+* Inventory - Ensures the total number of stocks of cattle products such as beef, milk and breeding of cattle.
+* Marketing - It allows users to determine if the cattle products are marketable based on its status and health records.
 
 ## Mockup
 Shown below is a mockup of the said website database.
