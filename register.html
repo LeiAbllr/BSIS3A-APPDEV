@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <title>BAKA360</title>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+
+        <script type="module">
+
+                const firebaseConfig = {
+                    apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+                    authDomain: "bsis3a-appdev.firebaseapp.com",
+                    databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+                    projectId: "bsis3a-appdev",
+                    storageBucket: "bsis3a-appdev.appspot.com",
+                    messagingSenderId: "815624012761",
+                    appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+                    measurementId: "G-DM6R45V78E"
+                };
+          
+            firebase.initializeApp(firebaseConfig);   
+            const db = firebase.database();
+
+            $("#addData").click(function(){
+
+                    var firstnameData = $("#userfirstname").val();
+                    var lastnameData = $("#userlastname").val();
+                    var addressData = $("#useraddress").val();
+                    var birthdateData = $("#userbirthdate").val();
+                    var emailData = $("#useremail").val();
+                    var passwordData = $("#userpassword").val();
+
+                    let x = parseInt(Math.random() * 1000);
+
+                    db.ref("accounts/users"+lastnameData+x).set({
+                        firstname: firstnameData,
+                        lastname: lastnameData,
+                        address: addressData,
+                        birthdate: birthdateData,
+                        email: emailData,
+                        password: passwordData
+                    })
+                    .then(() => {
+                        alert("Registered successfully");
+                    })
+                    .catch((error) => {
+                        alert("There was an error. Please try again.", error);
+                    });
+            });
+
+            const usersRef = db.ref("accounts");
+
+            usersRef.once("value")
+                .then((snapshot) => {
+                    const data = snapshot.val();
+                    console.log(data);
+                })
+                .catch((error) => {
+                    console.error("Error reading data: ", error);
+                });
+            
+            $("#checkData").click(function(){
+
+                // add pa di ang pagread and then get ng data sa firebase sksk
+
+                var emailCheck = $("#useremail2").val();
+                var passwordCheck = $("#userpassword2").val();
+
+                
+
+                if (useremail2 == useremail && userpassword2 == userpassword) {
+                    alert("Logged in");
+                } else if (useremail2 == useremail && userpassword2 != userpassword) {
+                    alert("Incorrect password");
+                } else if (useremail2 != useremail && userpassword2 != userpassword) {
+                    alert("This account doesn't exist");
+                }
+                  else if (useremail2 == null || userpassword2 == null) {
+                    alert("Input is required");
+                };
+
+            });
+
+          </script>
+    </head>
+    <body>
+        <h1>Hello World!</h1>
+        <div>
+            <input type="text" name="firstname" id="userfirstname" value="" placeholder="First Name">
+            <input type="text" name="lastname" id="userlastname" value="" placeholder="Last Name">
+            <input type="text" name="address" id="useraddress" value="" placeholder="Address">
+            <input type="text" name="birthdate" id="userbirthdate" value="" placeholder="Birthdate">
+            <input type="text" name="email" id="useremail" value="" placeholder="Email">
+            <input type="text" name="password" id="userpassword" value="" placeholder="Password">
+
+            <button id="addData">Register</button>
+            <br>
+        </div>
+
+        <div>
+            <input type="text" name="email" id="useremail2" value="" placeholder="Email">
+            <input type="text" name="password" id="userpassword2" value="" placeholder="Password">
+            <button id="checkData">Login</button>
+        </div>
+    </body>
+
+    <style>
+
+    </style>
+ 
+</html>
