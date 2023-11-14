@@ -1,113 +1,83 @@
-<html>
-    <head>
-        <title>BAKA360</title>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-        <script src="https://code.jquery.com/jquery-3.7.1.slim.js"></script>
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BAKA360: The Development and Integration of Farm-to-Market Cattle Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+    <form id="MainForm" class="w-25 m-4">
+        <h2 class="mb-3">Register User</h2>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="userNameInput" placeholder="First Name">
+            <label for="floatingInput">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+            <label for="floatingInput">Email Address</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <a href="index.html"><button type=button style="float: right;" class="btn btn-primary">Login</button></a>
+        <button type="submit"  style="float: right;" class="btn btn-primary  me-2">Create Account</button>
+        
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 
         <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+            import { getDatabase, set, ref } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+            import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
 
-                const firebaseConfig = {
-                    apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
-                    authDomain: "bsis3a-appdev.firebaseapp.com",
-                    databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
-                    projectId: "bsis3a-appdev",
-                    storageBucket: "bsis3a-appdev.appspot.com",
-                    messagingSenderId: "815624012761",
-                    appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
-                    measurementId: "G-DM6R45V78E"
-                };
+            const firebaseConfig = {
+              apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+              authDomain: "bsis3a-appdev.firebaseapp.com",
+              databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+              projectId: "bsis3a-appdev",
+              storageBucket: "bsis3a-appdev.appspot.com",
+              messagingSenderId: "815624012761",
+              appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+              measurementId: "G-DM6R45V78E"
+            };
           
-            firebase.initializeApp(firebaseConfig);   
-            const db = firebase.database();
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase();
+            const auth = getAuth(app);
 
-            $("#addData").click(function(){
+            let eInput = document.getElementById('emailInput');
+            let pInput = document.getElementById('passwordInput');
+            let unInput = document.getElementById('userNameInput');
+            let MainForm = document.getElementById('MainForm');
 
-                    var firstnameData = $("#userfirstname").val();
-                    var lastnameData = $("#userlastname").val();
-                    var addressData = $("#useraddress").val();
-                    var birthdateData = $("#userbirthdate").val();
-                    var emailData = $("#useremail").val();
-                    var passwordData = $("#userpassword").val();
+            let CreateAccount = evt => {
+                evt.preventDefault();
 
-                    let x = parseInt(Math.random() * 1000);
-
-                    db.ref("accounts/users"+lastnameData+x).set({
-                        firstname: firstnameData,
-                        lastname: lastnameData,
-                        address: addressData,
-                        birthdate: birthdateData,
-                        email: emailData,
-                        password: passwordData
+                createUserWithEmailAndPassword(auth, eInput.value, pInput.value)
+                .then((credentials)=>{
+                    set(ref(db, 'UsersAuthList/' + credentials.user.uid), { //save information of user with its uid created in firebase
+                        userName: unInput.value
                     })
-                    .then(() => {
-                        alert("Registered successfully");
-                    })
-                    .catch((error) => {
-                        alert("There was an error. Please try again.", error);
-                    });
-            });
 
-            const usersRef = db.ref("accounts");
-
-            usersRef.once("value")
-                .then((snapshot) => {
-                    const data = snapshot.val();
-                    console.log(data);
                 })
-                .catch((error) => {
-                    console.error("Error reading data: ", error);
-                });
-            
-            $("#checkData").click(function(){
+                .catch((error)=>{
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                })
+            }
 
-                // add pa di ang pagread and then get ng data sa firebase sksk
+            MainForm.addEventListener('submit', CreateAccount);
+    </script>
+</body>
 
-                var emailCheck = $("#useremail2").val();
-                var passwordCheck = $("#userpassword2").val();
-
-                
-
-                if (useremail2 == useremail && userpassword2 == userpassword) {
-                    alert("Logged in");
-                } else if (useremail2 == useremail && userpassword2 != userpassword) {
-                    alert("Incorrect password");
-                } else if (useremail2 != useremail && userpassword2 != userpassword) {
-                    alert("This account doesn't exist");
-                }
-                  else if (useremail2 == null || userpassword2 == null) {
-                    alert("Input is required");
-                };
-
-            });
-
-          </script>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-        <div>
-            <input type="text" name="firstname" id="userfirstname" value="" placeholder="First Name">
-            <input type="text" name="lastname" id="userlastname" value="" placeholder="Last Name">
-            <input type="text" name="address" id="useraddress" value="" placeholder="Address">
-            <input type="text" name="birthdate" id="userbirthdate" value="" placeholder="Birthdate">
-            <input type="text" name="email" id="useremail" value="" placeholder="Email">
-            <input type="text" name="password" id="userpassword" value="" placeholder="Password">
-
-            <button id="addData">Register</button>
-            <br>
-        </div>
-
-        <div>
-            <input type="text" name="email" id="useremail2" value="" placeholder="Email">
-            <input type="text" name="password" id="userpassword2" value="" placeholder="Password">
-            <button id="checkData">Login</button>
-        </div>
-    </body>
-
-    <style>
-
-    </style>
- 
 </html>
