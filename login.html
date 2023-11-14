@@ -60,13 +60,13 @@
 
                 signInWithEmailAndPassword(auth, eInput.value, pInput.value) //check email n pass
                 .then((credentials)=>{ //will have credentails to be used
-                    get(child(dbref, 'UsersAuthList/', + credentials.user.uid)).then((snapshot)=>{ //using credential to get information that was saved in realtime db
-                        if(snapshot.exist){
+                    get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{ //using credential to get information that was saved in realtime db
+                        if(snapshot.exists()){
                             sessionStorage.setItem("user-info", JSON.stringify({ //built in js function that can convert object/array into string
                                 userName: snapshot.val().userName //fname n last name will be converted into string and saved in session storage
                             }))
                             sessionStorage.setItem("user-creds", JSON.stringify(credentials.user)); 
-                            window.location.href = 'main.html'; //change window loacation
+                            window.location.href = 'home.html'; //change window loacation
                         }
                     })
 
