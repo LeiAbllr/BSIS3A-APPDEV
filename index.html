@@ -1,85 +1,78 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>BAKA360: The Development and Integration of Farm-to-Market Cattle Management System</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-
-<body>
-    <form id="MainForm" class="w-25 m-4">
-        <h2 class="mb-3">Login User</h2>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
-            <label for="floatingInput">Email Address</label>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Blogs
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Blog Submission Guidelines</a></li>
+                  <li><a class="dropdown-item" href="#">Blog Submission Form</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">n</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success me-2" type="submit">Search</button>
+            </form>
+            <form class="d-flex" role="search">
+                <button class="btn btn-outline-success" type="button" id="logoutButton">Logout</button>
+              </form>
+          </div>
         </div>
-        <div class="form-floating mb-3">
-            <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-            <label for="floatingPassword">Password</label>
-        </div>
+      </nav>
 
-        <a href="register.html"><button type=button style="float: right;" class="btn btn-primary">Create Account</button></a>
-        <button type="submit"  style="float: right;" class="btn btn-primary  me-2">Login</button>
-        
-    </form>
+    <h2 id="message"></h2>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-        <script type="module">
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-            import { getDatabase, get, ref, child } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
-            import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+    <script>
+        let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+        let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
-            const firebaseConfig = {
-              apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
-              authDomain: "bsis3a-appdev.firebaseapp.com",
-              databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
-              projectId: "bsis3a-appdev",
-              storageBucket: "bsis3a-appdev.appspot.com",
-              messagingSenderId: "815624012761",
-              appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
-              measurementId: "G-DM6R45V78E"
-            };
-          
-            const app = initializeApp(firebaseConfig);
-            const db = getDatabase();
-            const auth = getAuth(app);
-            const dbref = ref(db);
+        let MsgHead = document.getElementById('message');
+        let SignoutBtn = document.getElementById('logoutbutton');
 
-            let eInput = document.getElementById('emailInput');
-            let pInput = document.getElementById('passwordInput');
-            let MainForm = document.getElementById('MainForm');
+        let LogoutUser = () => {
+            sessionStorage.removeItem("user-creds");
+            sessionStorage.removeItem("user-info");
+            window.location.href = 'login.html';
+        }
 
-            let LoginUser = evt => {
-                evt.preventDefault();
+        let CheckCred = ()=>{
+            if (!sessionStorage.getItem("user-creds"))
+                window.location.href = 'login.html';
 
-                signInWithEmailAndPassword(auth, eInput.value, pInput.value) //check email n pass
-                .then((credentials)=>{ //will have credentails to be used
-                    get(child(dbref, 'UsersAuthList/', + credentials.user.uid)).then((snapshot)=>{ //using credential to get information that was saved in realtime db
-                        if(snapshot.exist){
-                            sessionStorage.setItem("user-info", JSON.stringify({ //built in js function that can convert object/array into string
-                                userName: snapshot.val().userName //fname n last name will be converted into string and saved in session storage
-                            }))
-                            sessionStorage.setItem("user-creds", JSON.stringify(credentials.user)); 
-                            window.location.href = 'main.html'; //change window loacation
-                        }
-                    })
-
-                })
-                .catch((error)=>{
-                    alert(error.message);
-                    console.log(error.code);
-                    console.log(error.message);
-                })
+            else{
+                MsgHead.innerText = `Welcome, ${UserInfo.userName}.`;
             }
+        }
 
-            MainForm.addEventListener('submit', LoginUser); //once clicked submit loginuser will run
+        window.addEventListener('load', CheckCred);
+        SignoutBtn.addEventListener('click', LogoutUser);
     </script>
 </body>
-
 </html>
