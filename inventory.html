@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>Baka360:Inventory</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+
+<body>
+  
+  <div class="main--content">
+        <div class="header--wrapper">
+            <div class="header--title">
+                <h1>Inventory</h1>
+                <div id="search">
+                    <form action="/search" method="get">
+                    <img src=""/>
+                    <input type="text" id="search" name="q" placeholder="Enter ID">
+                    <input type="submit" value="Search">
+                </form>
+                </div>
+            </div>
+        </div>
+
+        <button id="addDataBtn"><h3>Add Data</h3></button>
+
+        <div id="popupForm" class="popup">
+            <span class="close" onclick="closeForm()">&times;</span>
+            <h2>Add Data</h2>
+            <form action="/process-form" method="post">
+                <label for="dataInput">Cattle Name</label>
+                <input type="text" id="dataInput" name="data" placeholder="Enter Name">
+    
+                <label for="numericInput">Age:</label>
+                <input type="number" id="numericInput" name="numericData" placeholder="Enter Age">
+    
+                <label for="dataInput">Health Status:</label>
+                <input type="text" id="dataInput" name="data" placeholder="Select Status">
+
+                <label for="dataInput">Beef Quality</label>
+                <input type="text" id="dataInput" name="data" placeholder="Select Quality">
+    
+                <label for="dateInput">Date:</label>
+                <input type="date" id="dateInput" name="date">
+    
+                <input type="submit" value="Add Data">
+            </form>
+        </div>
+        
+        <div class="data"> 
+            <h2>Cattle Inventory Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Health Status</th>
+                        <th>Beef Quality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Katkat</td>
+                        <td>2</td>
+                        <td>Healthy</td>
+                        <td>Good</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Liza</td>
+                        <td>3</td>
+                        <td>Poor</td>
+                        <td>Fair</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Naur</td>
+                        <td>1</td>
+                        <td>Excellent</td>
+                        <td>Good</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        function openForm() {
+            document.getElementById("popupForm").style.display = "block";
+        }
+        function closeForm() {
+            document.getElementById("popupForm").style.display = "none";
+        }
+        document.getElementById("addDataBtn").addEventListener("click", openForm);
+    </script>
+</body>
+</html>
