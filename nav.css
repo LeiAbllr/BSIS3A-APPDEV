@@ -244,6 +244,12 @@
   font-weight: 600;
 }
 
+.home-content {
+  background: #fff;
+  position: sticky;
+  top: 0;
+}
+
 @media (max-width: 400px) {
   .sidebar.close .nav-list li .sub-menu {
     display: none;
@@ -268,3 +274,4 @@
     left: 0;
   }
 }
+
