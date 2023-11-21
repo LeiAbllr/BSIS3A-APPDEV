@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="form.css">
+    <title>BAKA 360: A Farm-to-Market Cattle Management System</title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form id="MainForm">
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="https://google.com/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or</span>
+                <input type="text" class="form-control" id="userNameInput" placeholder="Username">
+                <input type="email" class="form-control" id="emailInput" placeholder="Email">
+                <input type="password" class="form-control" id="passwordInput" placeholder="Password">
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form id="MainForm2">
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="https://google.com/" class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="https://www.facebook.com/" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://github.com/" class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/" class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or</span>
+                <input type="email" id="emailInput2" placeholder="Email">
+                <input type="password" id="passwordInput2" placeholder="Password">
+                <a href="#">Forgot Password?</a>
+                <button type="submit2">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details to use all of site features</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal details to use all of site features</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module">
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+
+        registerBtn.addEventListener('click', () => {
+            container.classList.add("active");
+        });
+
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove("active");
+        });
+
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getDatabase, get, set, ref, child } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+            authDomain: "bsis3a-appdev.firebaseapp.com",
+            databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+            projectId: "bsis3a-appdev",
+            storageBucket: "bsis3a-appdev.appspot.com",
+            messagingSenderId: "815624012761",
+            appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+            measurementId: "G-DM6R45V78E"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase();
+        const auth = getAuth(app);
+        const dbref = ref(db);
+
+        let eInput = document.getElementById('emailInput');
+        let pInput = document.getElementById('passwordInput');
+        let unInput = document.getElementById('userNameInput');
+        let MainForm = document.getElementById('MainForm');
+
+        let CreateAccount = evt => {
+            evt.preventDefault();
+
+            createUserWithEmailAndPassword(auth, eInput.value, pInput.value)
+            .then((credentials)=>{
+                console.log(credentials);
+                set(ref(db, 'UsersAuthList/' + credentials.user.uid), { //save information of user with its uid created in firebase
+                    userName: unInput.value,
+                    email : eInput.value,
+                    last_login : Date.now()
+                })
+                get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{ //using credential to get information that was saved in realtime db
+                        if(snapshot.exists()){
+                            sessionStorage.setItem("user-info", JSON.stringify({ //built in js function that can convert object/array into string
+                                userName: snapshot.val().userName //fname n last name will be converted into string and saved in session storage
+                            }))
+                            sessionStorage.setItem("user-creds", JSON.stringify(credentials.user)); 
+                            window.location.href = 'nav.html'; //change window loacation
+                            alert('Account creation complete. Welcome to BAKA 360: A Farm-to-Market Cattle Management System');
+                        }
+                })
+            })
+            .catch((error)=>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        MainForm.addEventListener('submit', CreateAccount);
+
+        let eInput2 = document.getElementById('emailInput2');
+        let pInput2 = document.getElementById('passwordInput2');
+        let MainForm2 = document.getElementById('MainForm2');
+
+        let LoginUser = evt => {
+            evt.preventDefault();
+
+            signInWithEmailAndPassword(auth, eInput2.value, pInput2.value) //check email n pass
+            .then((credentials)=>{ //will have credentails to be used
+                get(child(dbref, 'UsersAuthList/' + credentials.user.uid)).then((snapshot)=>{ //using credential to get information that was saved in realtime db
+                    if(snapshot.exists()){
+                        sessionStorage.setItem("user-info", JSON.stringify({ //built in js function that can convert object/array into string
+                            userName: snapshot.val().userName //fname n last name will be converted into string and saved in session storage
+                        }))
+                        sessionStorage.setItem("user-creds", JSON.stringify(credentials.user)); 
+                        window.location.href = 'nav.html'; //change window loacation
+                        alert('Logged in successfully. Welcome back to BAKA 360: A Farm-to-Market Cattle Management System');
+                    }
+                })
+
+            })
+            
+            .catch((error)=>{
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+        }
+
+        MainForm2.addEventListener('submit2', LoginUser); //once clicked submit loginuser will run
+
+    </script>
+</body>
+
+</html>
