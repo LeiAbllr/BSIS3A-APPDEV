@@ -1,462 +1,159 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 *{
-    padding: 0;
-    margin: 0;
-    outline: none;
-    border: none;
-    box-sizing: border-box;
-    text-decoration: none;
-}
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
 
-img{
-    width: 100%;
-    display: flex;
 }
-
-a{
-    text-decoration: none;
-}
-
 body{
-    font-family: 'Poppins', sans-serif;
-    background-color: #090606;
-    width: 100%;
+  background: #F2E4C7;
 }
-
-nav{
-    max-width: 1200px;
-    margin: auto;
-    padding: 2rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
-.link a{
-    position: relative;
-    padding-bottom: 0.75rem;
-    color: #fff;
-}
-
-.link a::after{
-    content: "";
-    position: absolute;
-    height: 2px;
-    width: 0;
-    bottom: 0;
-    left: 0;
-    background-color: #c29f9f;
-    transition: all 0.3s ease;
-}
-
-.link a:hover::after{
-    width: 70%;
-}
-
-.btn{
-    padding: 1rem 2rem;
-    font-size: 1rem;
-    color: #fff;
-    background-color: #3d2b29;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.btn:hover{
-    background-color: #a17672;
-}
-
 .container{
-    max-width: 1200px;
-    margin: auto;
-    padding: 10rem 3rem;
+  display: flex;
 }
 
-.blur{
-    position: absolute;
-    box-shadow: 0 0 1000px 50px #a17672;
-    z-index: -100;
+header {
+  background-color: #f1f1f1;
+  padding: 20px;
 }
 
-header{
-    position: relative;
-    padding-top: 2rem;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 2rem;
+.container2 {
+  background-color: #ebebeb;
+  border: 10px;
+  border-radius: 8px;
 }
 
-header .content h4{
-    margin-bottom: 1rem;
-    color: #ccc;
-    font-size: 1rem;
-    font-weight: 600;
+.btn {
+  padding: 10px;
+  color: #fff;
+  border: 10px;
+  border-radius: 8px;
+  outline: none;
+  background: #523D38;
 }
 
-header .content h1{
-    color: #fff;
-    margin-bottom: 1rem;
-    font-size: 3rem;
-    font-weight: 700;
-    line-height: 4rem;
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-header .content h1 span{
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1px #fff;
+nav ul li a {
+  text-decoration: none;
+  color: #333;
 }
 
-header .content p{
-    margin-bottom: 2rem;
-    color: #ccc;
+nav ul li input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
 }
 
-header .image{
-    position: relative;
+.content-square:hover {
+  background: black;
+  background: linear-gradient(0deg, #7A5E53 0%, #D2C8C7 31%, #7A5E53 100%)
 }
 
-header .image::before{
-    content: "o";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 38rem;
-    font-weight: 400;
-    line-height: 20rem;
-    color: #a17672;
-    opacity: 0.2;
-    z-index: -100;
+.content-square {
+  background-color: #e1e1e1;
+  width: 23%;
+  height: 200px;
+  margin: 9px;
+  border: 2px solid #E5D6D6;
+  border-radius: 10px;
+  box-shadow: 0 5px 8px #ccc;
+  display: inline-block;
+  text-align: center
 }
 
-header .image img{
-    max-width: 600px;
-    margin: auto;
+h2 {
+  color: black;
 }
 
-section .header{
-    margin-bottom: 1rem;
-    color: #fff;
-    text-align: center;
-    font-size: 2.25rem;
-    font-weight: 600;
+#one {
+  background-color: #ffffff;
 }
 
-.features{
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+#two {
+  background-color: #ffffff;
 }
 
-.features .card{
-    background-color: #27272a;
-    padding: 1rem;
-    border: 2px solid transparent;
-    border-radius: 15px;
-    transition: all 0.3s ease;
+#three {
+  background-color: #ffffff;
 }
 
-.features .card:hover{
-    background-color: rgba(255, 255, 255, 0.108);
-    border-color: #fff;
+#four {
+  background-color: #ffffff;
 }
 
-.features .card span{
-    display: inline-block;
-    background-color: #3d2b29;
-    padding: 2px 9px;
-    margin-bottom: 1rem;
-    font-size: 1.75rem;
-    color: #fff;
-    border-radius: 5px;
+/* Benefits part */
+.container1 {
+  display: flex;
 }
 
-.features .card h4{
-    margin-bottom: 0.5rem;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 600;
+/* Main Section */
+.main {
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+
 }
 
-.features .card p{
-    color: #ccc;
-    margin-bottom: 1rem;
+.main-top {
+  width: 100%;
+  text-align: center;
+  font-size: 25px;
 }
 
-.features .card a{
-    color: #fff;
-    transition: all 0.3s ease;
+.main-skills {
+  display: flex;
+  margin-top: 20px;
 }
 
-.features .card a:hover{
-    color: #a17672;
+.main-skills .card {
+  width: 25%;
+  margin: 10px;
+  background: #ffff;
+  text-align: center;
+  border-radius: 15px;
+  padding: 10px;
+  filter: drop-shadow(-3px 4px 30px rgba(0, 0, 0, 0.25));
+
 }
 
-.sub-header{
-    max-width: 600px;
-    margin: auto;
-    text-align: center;
-    color: #ccc;
+.main-skills .card h3 {
+  margin: 10px;
+  text-transform: capitalize;
 }
 
-.pricing{
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+.main-skills .card p {
+  font-size: 12px;
 }
 
-.pricing .card{
-    padding: 3rem 2rem;
-    background-color: #27272a;
-    display: flex;
-    flex-direction: column;
-    border: 2px solid transparent;
-    border-radius: 15px;
-    transition: all 0.3s ease;
+.main-skills .card button {
+  background-color: #7A5E53;
+  color: #fffefe;
+  opacity: 3;
+  padding: 7px 15px;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: 0.3s;
+
 }
 
-.pricing .card:hover{
-    background-color: rgba(255, 255, 255, 0.108);
-    border-color: #fff;
+.card:hover button {
+  background-color: #523D38;
+  color: #ffffff;
 }
 
-.pricing .card .content{
-    flex: 1;
-    margin-bottom: 2rem;
-}
-
-.pricing .card h4{
-    margin-bottom: 1rem;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-.pricing .card h3{
-    color: #fff;
-    padding-bottom: 1rem;
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    font-weight: 600;
-    border-bottom: 2px dashed #fff;
-}
-
-.pricing .card p{
-    color: #fff;
-    margin-bottom: 0.75rem;
-}
-
-.pricing .card p i{
-    color: #ccc;
-    font-size: 1.2rem;
-    margin-right: 0.3rem;
-}
-
-.pricing .card button{
-    color: #fff;
-    background-color: transparent;
-    border: 2px solid #fff;
-}
-
-.pricing .card button:hover{
-    background-color: #3d2b29;
-    border-color: #3d2b29;
-}
-///inventory///
-.main--content{
-    position: relative;
-    background: #644a4a;
-    width: 100%;
-    padding: 1rem;
-}
-.header--title{
-    position: relative;
-    padding: 2rem;
-    margin: 8px 0;
-}
-#search form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    background: #fff;
-    border-radius: 10px;
-    padding: 10px 2rem;
-    margin-bottom: 1rem;
-}
-#search input[type="text"] {
-    padding: 8px;
-    width: 200px;
-    border: 1px solid #000000;
-    border-radius: 0px;
-    margin-right: 10px;
-    margin-top: 10px;
-}
-
-input[type="submit"] {
-    padding: 8px 15px;
-    background-color: rgb(238, 231, 129);
-    color: #030303;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-input[type="submit"]:hover{
-    background-color: rgb(236, 236, 233);
-}
-.popup{
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    border: 1px solid #000000;
-    background-color: beige;
-    z-index: 1;
-}
-
-.popup form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.popup label {
-    flex-basis: 100%;
-    margin-bottom: 5px;
-}
-
-.popup input {
-    flex: 0 0 48%;
-    padding: 8px;
-    margin-bottom: 10px;
-}
-
-.popup input[type="submit"] {
-    flex: 1; 
-    background-color: rgb(238, 231, 129);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-}
-.close{
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-///////////end of inv//////
-
-footer{
-    position: relative;
-    display: grid;
-    grid-template-columns: 400px repeat(3, 1fr);
-    gap: 2rem;
-}
-
-footer .column .logo{
-    max-width: 100px;
-    margin-bottom: 2rem;
-}
-
-footer .column p{
-    color: #ccc;
-    margin-bottom: 2rem;
-}
-
-footer .column .socials{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-footer .column .socials a{
-    color: #ccc;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    font-size: 1.25rem;
-    border-radius: 100%;
-    transition: all 0.3s ease;
-}
-
-footer .column .socials a:hover{
-    color: #fff;
-    background-color: #3d2b29;
-    border-color: #3d2b29;
-}
-
-footer .column h4{
-    color: #fff;
-    margin-bottom: 2rem;
-    font-size: 1.2rem;
-    font-weight: 500;
-}
-
-footer .column > a{
-    display: block;
-    color: #ccc;
-    margin-bottom: 1rem;
-    transition: all 0.3s ease;
-}
-
-footer .column > a:hover{
-    color: #a17672;
-}
-
-.copyright{
-    max-width: 1200px;
-    margin: auto;
-    padding: 1rem;
-    color: #fff;
-    font-size: 0.8rem;
-    text-align: center;
-}
-
-@media (width < 900px){
-    .nav-links{
-        display: none;
-    }
-    header{
-        grid-template-columns: repeat(1, 1fr);
-    }
-    header .image{
-        grid-area: 1/1/2/2;
-    }
-    .features{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .pricing{
-        grid-template-columns: repeat(2, 1fr);
-    }
-    footer{
-        grid-template-columns: 1fr 200px;
-    }
-}
-
-@media (width < 600px){
-    header .image::before{
-        display: none;
-    }
-
-    .features{
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .pricing{
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    footer{
-        grid-template-columns: 1fr 150px;
-    }
+.main-skills .card i {
+  font-size: 22px;
+  padding: 10px;
 }
