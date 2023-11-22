@@ -373,29 +373,37 @@ footer .column > a:hover{
     }
 }
 /////inventory////
-.main--content{
-    position: relative;
-    background: #644a4a;
-    width: 100%;
+.main--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #3D2B29;
     padding: 1rem;
+    color: #F6F6F6;
 }
-.header--title{ 
-    background-color: #090606; 
-    text-align: center; 
-    height: 10%; 
-    padding: 20px; 
+
+.header--title {
+    background-color: #090606;
+    text-align: center;
+    height: 10%;
+    padding: 20px;
     color: #F9F6F6;
 }
+
+#search {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
 #search form {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: #F9F6F6;
-    border-radius: 10px;
     padding: 10px 20px;
     margin-bottom: 5px;
 }
+
 #search input[type="text"] {
     padding: 8px;
     width: 200px;
@@ -404,30 +412,34 @@ footer .column > a:hover{
     margin-right: 10px;
     margin-top: 10px;
 }
-
-input[type="submit"] {
-    padding: 8px 15px;
-    background-color: #A17672;
-    color: #F9F6F6;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#search input[type="submit"] {
+    padding: 8px;
+    width: 150px;
     margin-top: 10px;
+    color: #F6F6F6;
+    background-color: #A17672;
+    border: none;
+    cursor: pointer;
 }
-input[type="submit"]:hover{
+#search input[type="submit"]:hover {
     background-color: #3D2B29;
 }
-#addDataBtn{
+#addDataBtn {
     position: relative;
-    padding: 5px;
-    margin-left: 50px;
+    padding: 10px;
+    width: 150;
+    margin-left: 10px;
+    color: #F6F6F6;
     border-radius: 2%;
+    
     background-color: #A17672;
 }
-#addDataBtn:hover{
+
+#addDataBtn:hover {
     background-color: #3D2B29;
 }
-.popup{
+
+.popup {
     display: none;
     position: fixed;
     top: 50%;
@@ -435,9 +447,10 @@ input[type="submit"]:hover{
     transform: translate(-50%, -50%);
     padding: 20px;
     border: 1px solid #000000;
-    background-color: #3D2B29;
+    background-color: #A17672;
     z-index: 1;
 }
+
 .popup form {
     display: flex;
     flex-direction: row;
@@ -454,21 +467,26 @@ input[type="submit"]:hover{
     margin-bottom: 10px;
 }
 .popup input[type="submit"] {
-    flex: 1; 
-    background-color: #3D2B29;
+    flex: 1;
+    background-color:#8D625E;
     color: #F9F6F6;
     border: none;
     padding: 10px;
     cursor: pointer;
 }
-.close{
+.popup input[type="submit"]:hover {
+    background-color: #090606;
+}
+.close {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
+    color:#F6F6F6;
 }
-table{
-    border: 1px #000000;
-    text-color: #F6F6F6;
+table {
+    width: 100%;
+    border: 1px solid #000000;
+    color: #F6F6F6;
     background-color: #3D2B29;
 }
