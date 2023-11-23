@@ -34,6 +34,11 @@ header {
   background: #523D38;
 }
 
+.btn:hover{
+  background: black;
+  background: linear-gradient(0deg,#7A5E53 0%, #D2C8C7 31%, #7A5E53 100%)
+}
+
 nav ul {
   display: flex;
   justify-content: space-around;
@@ -51,11 +56,6 @@ nav ul li input[type="text"] {
   width: 200px;
   padding: 5px;
   border: 1px solid #ccc;
-}
-
-.content-square:hover {
-  background: black;
-  background: linear-gradient(0deg, #7A5E53 0%, #D2C8C7 31%, #7A5E53 100%)
 }
 
 .content-square {
