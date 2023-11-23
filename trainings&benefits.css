@@ -31,12 +31,12 @@ header {
   border: 10px;
   border-radius: 8px;
   outline: none;
-  background: #523D38;
+  background: #7A5E53;
 }
 
 .btn:hover{
   background: black;
-  background: linear-gradient(0deg,#7A5E53 0%, #D2C8C7 31%, #7A5E53 100%)
+  background-color: #523D38;
 }
 
 nav ul {
