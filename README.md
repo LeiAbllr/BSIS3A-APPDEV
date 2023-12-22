@@ -12,8 +12,12 @@ Due to the limited time available for the creation of this website database, the
 * Inventory - Ensures the total number of stocks of cattle products such as beef, milk, and breeding cattle.
 * Marketing - It allows users to determine if the cattle products are marketable based on their status and health records.
 
-## Mockup
-Shown below is a mockup of the said website database.
+## Important Accounts
+* User Email: user@gmail.com     Password: 222222222
+* Admin Email: admin@gmail.com     Password: 111111111
+
+## Screenshots
+Below are the screenshots of the website. 
 
 (placeholder)
 ![381652099_873714797424273_2925635500965045929_n](https://github.com/LeiAbllr/BSIS31-APPDEV/assets/91423384/ae4f7c89-8a18-4e92-98de-be1d4c41fbe8)
