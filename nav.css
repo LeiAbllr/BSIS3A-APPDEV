@@ -166,7 +166,7 @@
 
 .sidebar .nav-list li .sub-menu a:hover {
   opacity: 1;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .sidebar .nav-list li .sub-menu .link-name {

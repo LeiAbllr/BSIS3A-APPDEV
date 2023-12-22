@@ -134,7 +134,7 @@
 
                         if (adminEmail === "admin@gmail.com") {
                             alert('Logged in successfully. Welcome back admin.');
-                            window.location.href = 'adminHome.html'; // Redirect to admin page
+                            window.location.href = 'adminNav.html'; // Redirect to admin page
                         } else {
                             sessionStorage.setItem("user-info", JSON.stringify({ //built in js function that can convert object/array into string
                                 userName: snapshot.val().userName //fname n last name will be converted into string and saved in session storage

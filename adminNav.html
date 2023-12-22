@@ -13,7 +13,7 @@
 
 
     <!--css file-->
-    <link rel="stylesheet" href="adminHome.css">
+    <link rel="stylesheet" href="adminNav.css">
   </head>
   <body>
     <div class="sidebar close">
@@ -24,13 +24,13 @@
 
       <ul class="nav-list">
         <li>
-          <a href="#">
+          <a href="nav.html">
             <i class="ri-dashboard-2-line"></i>
             <span class="link-name">Dashboard</span>
           </a>
 
           <ul class="sub-menu blank">
-            <li><a href="#" class="link-name">Dashboard</a></li>
+            <li><a href="nav.html" class="link-name">Dashboard</a></li>
           </ul>
         </li>
 
@@ -45,9 +45,8 @@
 
           <ul class="sub-menu">
             <li><a href="#" class="link-name">Blogs</a></li>
-            <li><a href="#">New Blog Post</a></li>
-            <li><a href="blog.html">Saved Blogs</a></li>
-            <li><a href="#">Drafts</a></li>
+            <li><a href="blog.html">Blogs</a></li>
+            <li><a href="BlogForm.html">Post New Blog</a></li>
           </ul>
         </li>
 
@@ -55,31 +54,38 @@
           <div class="icon-link">
             <a href="#">
                 <i class="ri-presentation-fill"></i>
-              <span class="link-name">Offers</span>
+              <span class="link-name">Courses</span>
             </a>
-            <i class="fas fa-caret-down arrow"></i>
           </div>
 
-          <ul class="sub-menu">
-            <li><a href="#" class="link-name">Offers</a></li>
-            <li><a href="trainings&benefits.html">Tranings and Benefits</a></li>
-            <li><a href="#">Courses</a></li>
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Courses</a></li>
           </ul>
         </li>
 
         <li>
           <div class="icon-link">
             <a href="#">
-                <i class="ri-briefcase-4-line"></i>
-              <span class="link-name">Management</span>
+                <i class="ri-presentation-fill"></i>
+              <span class="link-name">Training</span>
             </a>
-            <i class="fas fa-caret-down arrow"></i>
           </div>
 
-          <ul class="sub-menu">
-            <li><a href="#" class="link-name">Management</a></li>
-            <li><a href="inventory.html">Inventory</a></li>
-            <li><a href="#">Analytics</a></li>
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Training</a></li>
+          </ul>
+        </li>
+        
+        <li>
+          <div class="icon-link">
+            <a href="#">
+                <i class="ri-briefcase-4-line"></i>
+              <span class="link-name">Inventory</span>
+            </a>
+          </div>
+
+          <ul class="sub-menu blank">
+            <li><a href="#" class="link-name">Inventory</a></li>
           </ul>
         </li>
 
@@ -118,13 +124,13 @@
         
         <li>
           <div class="logout">
-                <a href="form.html">
+                <a href="index.html">
                     <i class="ri-logout-box-line"></i>
                     <span class="link-name">Logout</span>
                 </a>
 
                 <ul class="sub-menu blank">
-                    <li><a href="form.html" class="link-name">Logout</a></li>
+                    <li><a href="index.html" class="link-name">Logout</a></li>
                 </ul>
           </div>
         </li>
@@ -140,6 +146,6 @@
   </div>
 
 
-  <script src="adminHome.js"></script>
+  <script src="adminNav.js"></script>
 </body>
 </html>
