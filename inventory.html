@@ -14,6 +14,19 @@
   <!--css file-->
   <link rel="stylesheet" href="nav.css">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="inv.css">
+  
+  <!--for data tbl-->
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <!-- Include DataTables CSS and JS -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+      
+  <!--for firebase-->
+  <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore.js"></script>
 </head>
 <body>
   <div class="sidebar close">
@@ -45,9 +58,8 @@
 
         <ul class="sub-menu">
           <li><a href="#" class="link-name">Blogs</a></li>
-          <li><a href="#">New Blog Post</a></li>
-          <li><a href="#">Saved Blogs</a></li>
-          <li><a href="#">Drafts</a></li>
+          <li><a href="BlogForm.html">New Blog Post</a></li>
+          <li><a href="blog.html">Saved Blogs</a></li>
         </ul>
       </li>
 
@@ -139,14 +151,9 @@
     <div class="main--content">
         <div class="header--wrapper">
             <div class="header--title">INVENTORY</div>
-                <div id="search">
-                    <form action="/search" method="get">
-                    <img src=""/>
-                    <input type="text" id="search" name="q" placeholder="Enter ID">
-                    <input type="submit" value="Search">
-                    </form>
-            </div>
         </div>
+        <br>
+        <h2 style="margin-top: 10px; text-align: center;">Cattle Inventory Table</h2><br>
         <br>
         <button id="addDataBtn">Add Data</button>
 
@@ -154,114 +161,108 @@
             <span class="close" onclick="closeForm()">&times;</span>
             <h2>Enter Data</h2>
             <form action="/process-form" method="post">
-                <label for="dataInput">Cattle Name</label>
-                <input type="text" id="dataInput" name="data" placeholder="Enter Name">
-    
-                <label for="numericInput">Age:</label>
-                <input type="number" id="numericInput" name="numericData" placeholder="Enter Age">
-    
-                <label for="dataInput">Health Status:</label>
-                <input type="text" id="dataInput" name="data" placeholder="Select Status">
+              <label for="dataInput">Batch ID</label>
+              <input type="number" id="numericInput" required name="numericData" placeholder="Enter Batch ID">
+  
+              <label for="numericInput">Age:</label>
+              <input type="number" id="numericInput" required name="numericData" placeholder="Enter Age">
+  
+              <label for="healthStatusSelect">Health Status</label>
+              <select id="healthStatusSelect" required name="data" placeholder="Select Status">\
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+                <option value="Poor">Poor</option>
+              </select>
 
-                <label for="dataInput">Beef Quality</label>
-                <input type="text" id="dataInput" name="data" placeholder="Select Quality">
-    
-                <label for="dateInput">Date:</label>
-                <input type="date" id="dateInput" name="date">
-    
-                <input type="submit" value="Add Data">
+              <label for="beefQualitySelect">Beef Quality</label>
+              <select id="beefQualitySelect" required name="data" placeholder="Select Quality">
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+                <option value="Poor">Poor</option>
+              </select>
+              <button type="submit">Submit</button>
             </form>
         </div>
-        <br><br>
+        <br>
         <div class="data"> 
-            <h2 style="margin-top: 10px; text-align: center;">Cattle Inventory Table</h2><br>
+          <br>
             <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Age</th>
-                        <th>Health Status</th>
-                        <th>Beef Quality</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Katkat</td>
-                        <td>2</td>
-                        <td>Healthy</td>
-                        <td>Good</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Liza</td>
-                        <td>3</td>
-                        <td>Poor</td>
-                        <td>Fair</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Naur</td>
-                        <td>1</td>
-                        <td>Excellent</td>
-                        <td>Good</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>Lei</td>
-                      <td>1</td>
-                      <td>Fair</td>
-                      <td>Good</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>Matt</td>
+              <thead>
+                  <tr>
+                      <th>Batch ID</th>
+                      <th>Age</th>
+                      <th>Health Status</th>
+                      <th>Beef Quality</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>1001</td>
                       <td>2</td>
-                      <td>Poor</td>
-                      <td>Fair</td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Gail</td>
-                      <td>1</td>
                       <td>Good</td>
                       <td>Good</td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td>Jormy</td>
-                      <td>1</td>
-                      <td>Excellent</td>
+                  </tr>
+                  <tr>
+                      <td>1002</td>
+                      <td>3</td>
+                      <td>Poor</td>
                       <td>Fair</td>
-                    </tr>
-                    <tr>
-                      <td>8</td>
-                      <td>Love</td>
+                  </tr>
+                  <tr>
+                      <td>1003</td>
                       <td>1</td>
-                      <td>Fair</td>
-                      <td>Poor</td>
-                    </tr>
-                    <tr>
-                      <td>9</td>
-                      <td>Angie</td>
-                      <td>1</td>
-                      <td>Poor</td>
-                      <td>Poor</td>
-                    </tr>
-                    <tr>
-                      <td>10</td>
-                      <td>Kram</td>
-                      <td>2</td>
                       <td>Excellent</td>
                       <td>Good</td>
                   </tr>
-                </tbody>
-            </table>
+                  <tr>
+                    <td>1004</td>
+                    <td>1</td>
+                    <td>Fair</td>
+                    <td>Good</td>
+                  </tr>
+                  <tr>
+                    <td>1005</td>
+                    <td>2</td>
+                    <td>Poor</td>
+                    <td>Fair</td>
+                  </tr>
+                  <tr>
+                    <td>1006</td>
+                    <td>1</td>
+                    <td>Good</td>
+                    <td>Good</td>
+                  </tr>
+                  <tr>
+                    <td>1007</td>
+                    <td>1</td>
+                    <td>Excellent</td>
+                    <td>Fair</td>
+                  </tr>
+                  <tr>
+                    <td>1008</td>
+                    <td>1</td>
+                    <td>Fair</td>
+                    <td>Poor</td>
+                  </tr>
+                  <tr>
+                    <td>1009</td>
+                    <td>1</td>
+                    <td>Poor</td>
+                    <td>Poor</td>
+                  </tr>
+                  <tr>
+                    <td>1010</td>
+                    <td>2</td>
+                    <td>Excellent</td>
+                    <td>Good</td>
+                </tr>
+              </tbody>
+          </table>
         </div>
 
     </div>
-
 </div>
 <script>
         function openForm() {
@@ -272,7 +273,30 @@
         }
         document.getElementById("addDataBtn").addEventListener("click", openForm);
 </script>
+<script>
+  const firebaseConfig = {
+        apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+        authDomain: "bsis3a-appdev.firebaseapp.com",
+        databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+        projectId: "bsis3a-appdev",
+        storageBucket: "bsis3a-appdev.appspot.com",
+        messagingSenderId: "815624012761",
+        appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+        measurementId: "G-DM6R45V78E"
+      };
 
+        popupForm.addEventListener("submit", (e) => { e.preventDefault();
+          const numericData = document.getElementById("numericInput").value; 
+          const healthStatus = document.getElementById("healthStatusSelect").value; 
+          const beefQuality = document.getElementById("beefQualitySelect").value; 
+          
+          database.ref("batches").push({ numericData, healthStatus, beefQuality, }); 
+          
+          closeForm(); }); 
+        $(document).ready(function () {
+        $('table').DataTable();
+        });
+</script>
   <script src="nav.js"></script>
 </body>
 </html>

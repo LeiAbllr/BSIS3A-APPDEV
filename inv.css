@@ -1,0 +1,81 @@
+.main--content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #3D2B29;
+    padding: 1rem;
+    color: #F6F6F6;
+}
+
+.header--title {
+    background-color: #090606;
+    text-align: center;
+    height: 10%;
+    padding: 20px;
+    color: #F9F6F6;
+}
+#addDataBtn {
+    position:absolute;
+    padding: 10px;
+    width: 150;
+    margin-left: 10px;
+    color: #F6F6F6;
+    border-radius: 2%;
+    background-color: #A17672;
+}
+
+#addDataBtn:hover {
+    background-color: #3D2B29;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #000000;
+    background-color: #A17672;
+    z-index: 1;
+}
+
+.popup form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.popup label {
+    flex-basis: 100%;
+    margin-bottom: 5px;
+}
+.popup input, select {
+    flex: 0 0 48%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+.popup button {
+    flex: 1;
+    background-color:#8D625E;
+    color: #F9F6F6;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.popup button:hover {
+    background-color: #090606;
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color:#F6F6F6;
+}
+table {
+    width: 100%;
+    border: 1px solid #000000;
+    color: #F6F6F6;
+    background-color: #3D2B29;
+}

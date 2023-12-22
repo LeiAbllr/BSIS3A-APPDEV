@@ -1,24 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Benefits & Trainings</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="trainings&benefits.css">
+  <title>BAKA360: The Development and Integration of Farm-to-Market Cattle Management System</title>
+
   <!--font awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
+
   <!--css file-->
   <link rel="stylesheet" href="nav.css">
-</head>
+  <style>
+      * {
+      box-sizing: border-box;
+      }
+      html, body {
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px; 
+      color: #523D38;
+      }
+      input, textarea { 
+      outline: none;
+      }
+      h1 {
+      margin-top: 0;
+      font-weight: 500;
+      }
+      form {
+      position: relative;
+      width: 80%;
+      border-radius: 30px;
+      background: #F9F6F6;
+      max-width: 70%;
+      max-height: 30%;
+      margin-top: -37%;
+      margin-left: 25%;
+      }
+      .form-left-decoration,
+      .form-right-decoration {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 20px;
+      border-radius: 20px;
+      background: #7A5E53;
+      }
+      .form-left-decoration {
+      bottom: 60px;
+      left: -30px;
+      }
+      .form-right-decoration {
+      top: 60px;
+      right: -30px;
+      }
+      .form-left-decoration:before,
+      .form-left-decoration:after,
+      .form-right-decoration:before,
+      .form-right-decoration:after {
+      content: "";
+      position: absolute;
+      width: 50px;
+      height: 20px;
+      border-radius: 30px;
+      background: #DCC4A8;
+      }
+      .form-left-decoration:before {
+      top: -20px;
+      }
+      .form-left-decoration:after {
+      top: 20px;
+      left: 10px;
+      }
+      .form-right-decoration:before {
+      top: -20px;
+      right: 0;
+      }
+      .form-right-decoration:after {
+      top: 20px;
+      right: 10px;
+      }
+      .circle {
+      position: absolute;
+      bottom: 80px;
+      left: -55px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #DFC8AD;
+      }
+      .form-inner {
+      padding: 40px;
+      }
+      .form-inner input,
+      .form-inner textarea {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 20px;
+      background: #F2E4C7;
+      }
+      .form-inner textarea {
+      resize: none;
+      }
+      button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 20px;
+      border: none;
+      border-bottom: 4px solid #1E1415;
+      background: #523D38; 
+      font-size: 16px;
+      font-weight: 400;
+      color: #F2E4C7;
+      }
+      button:hover {
+      background: #1E1415;
+      } 
+      @media (min-width: 568px) {
+      form {
+      width: 60%;
+      }
+      }
+    </style>
 
+</head>
 <body>
   <div class="sidebar close">
     <div class="logo">
@@ -49,7 +164,7 @@
 
         <ul class="sub-menu">
           <li><a href="#" class="link-name">Blogs</a></li>
-          <li><a href="BlogForm.html">New Blog Post</a></li>
+          <li><a href="#">New Blog Post</a></li>
           <li><a href="blog.html">Saved Blogs</a></li>
         </ul>
       </li>
@@ -65,7 +180,7 @@
 
         <ul class="sub-menu">
           <li><a href="#" class="link-name">Offers</a></li>
-          <li><a href="#">Trainings and Benefits</a></li>
+          <li><a href="trainings&benefits.html">Tranings and Benefits</a></li>
           <li><a href="#">Courses</a></li>
         </ul>
       </li>
@@ -134,81 +249,28 @@
     </ul>
   </div>
 
+
   <div class="home-section">
     <div class="home-content">
       <i class="fas fa-bars"></i>
       <span class="text">BAKA 360: FARM-TO-MARKET CATTLE MANAGEMENT SYSTEM</span>
     </div>
-    <div class="container1">
-      <section class="main">
-        <div class="main-top">
-          <h1>Benefits & Trainings</h1>
-        </div>
-        <div class="main-skills">
-          <div class="card">
-            <h3>Benefit 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="benefit1.html"><button>Click More</button></a>
-          </div>
-          <div class="card">
-            <h3>Benefit 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="benefit1.html"><button>Click More</button></a>
-          </div>
-          <div class="card">
-            <h3>Benefit 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <a href="benefit1.html"><button>Click More</button></a>
-          </div>
-          <div class="card">
-            <h3>Benefit 4</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-           <a href="benefit1.html"><button>Click More</button></a>
-          </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <main>
-          <div class="container2">
-            <div class="content-square" id="one">
-             <br><h2>
-                Training 1
-                </h1>
-                <br>
-                <a href="Training1.html"><button class="btn">Get Started</button> </a>
-            </div>
-
-            <div class="content-square" id="two">
-              <br><h2>
-                Training 2
-                </h1>
-                <br>
-                <a href="Training2.html"><button class="btn">Get Started</button> </a>
-            </div>
-
-            <div class="content-square" id="three">
-              <br><h2>
-                Training 3
-                </h1>
-                <br>
-                <a href="Training3.html"><button class="btn">Get Started</button> </a>
-            </div>
-
-            <div class="content-square" id="four">
-             <br><h2>
-                Training 4
-                </h1>
-                <br>
-                <a href="Training4.html"><button class="btn">Get Started</button> </a>
-            </div>
-          </div>
-          <div class="content">
-          </div>
   </div>
-      </main>
-      <script src="script.js"></script>
-      <script src="nav.js"></script>
-</body>
 
+  
+  <form action="/" class="decor">
+    <div class="form-left-decoration"></div>
+    <div class="form-right-decoration"></div>
+    <div class="circle"></div>
+    <div class="form-inner">
+      <h1>Create New Blog Post </h1>
+      <input type="text" placeholder="Title">
+      <input type="text-name" placeholder="Authors Name">
+      <textarea placeholder="Description..." rows="5"></textarea>
+      <button type="submit" href="/">Submit</button>
+    </div>
+  </form>
+
+  <script src="nav.js"></script>
+</body>
 </html>
