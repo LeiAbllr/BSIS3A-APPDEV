@@ -12,10 +12,10 @@
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
   <!--css file-->
-  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="userdashboard.css">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="inv.css">
-  
+
   <!--for data tbl-->
   <!-- Include jQuery -->
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -28,125 +28,129 @@
   <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.3.0/firebase-firestore.js"></script>
 </head>
-<body>
-  <div class="sidebar close">
-    <div class="logo">
-      <i class="ri-store-3-fill"></i>
-      <span class="logo-name">BAKA360</span>
-    </div>
+<div class="sidebar close">
+  <div class="logo">
+    <i class="ri-store-3-fill"></i>
+    <span class="logo-name">BAKA360</span>
+  </div>
 
-    <ul class="nav-list">
-      <li>
-        <a href="#">
-          <i class="ri-dashboard-2-line"></i>
-          <span class="link-name">Dashboard</span>
-        </a>
+  <ul class="nav-list">
+    <li>
+      <a href="nav.html">
+        <i class="ri-dashboard-2-line"></i>
+        <span class="link-name">Dashboard</span>
+      </a>
 
-        <ul class="sub-menu blank">
-          <li><a href="#" class="link-name">Dashboard</a></li>
-        </ul>
-      </li>
+      <ul class="sub-menu blank">
+        <li><a href="userdashboard.html" class="link-name">Dashboard</a></li>
+      </ul>
+    </li>
 
-      <li>
-        <div class="icon-link">
-          <a href="#">
+    <li>
+      <div class="icon-link">
+        <a href="blog.html">
             <i class="ri-article-line"></i>
-            <span class="link-name">Blogs</span>
-          </a>
-          <i class="fas fa-caret-down arrow"></i>
-        </div>
+          <span class="link-name">Blogs</span>
+        </a>
+      </div>
 
-        <ul class="sub-menu">
-          <li><a href="#" class="link-name">Blogs</a></li>
-          <li><a href="BlogForm.html">New Blog Post</a></li>
-          <li><a href="blog.html">Saved Blogs</a></li>
-        </ul>
-      </li>
+      <ul class="sub-menu blank">
+        <li><a href="blog.html" class="link-name">Blogs</a></li>
+      </ul>
+    </li>
 
-      <li>
-        <div class="icon-link">
-          <a href="#">
+    <li>
+      <div class="icon-link">
+        <a href="#">
+          <i class="ri-graduation-cap-line"></i>
+          <span class="link-name">Courses</span>
+        </a>
+      </div>
+
+      <ul class="sub-menu blank">
+        <li><a href="courses.html" class="link-name">Courses</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <div class="icon-link">
+        <a href="#">
             <i class="ri-presentation-fill"></i>
-            <span class="link-name">Offers</span>
-          </a>
-          <i class="fas fa-caret-down arrow"></i>
-        </div>
+          <span class="link-name">Training</span>
+        </a>
+      </div>
 
-        <ul class="sub-menu">
-          <li><a href="#" class="link-name">Offers</a></li>
-          <li><a href="trainings&benefits.html">Trainings and Benefits</a></li>
-          <li><a href="#">Courses</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <div class="icon-link">
-          <a href="#">
+      <ul class="sub-menu blank">
+        <li><a href="training.html" class="link-name">Training</a></li>
+      </ul>
+    </li>
+    
+    <li>
+      <div class="icon-link">
+        <a href="#">
             <i class="ri-briefcase-4-line"></i>
-            <span class="link-name">Management</span>
-          </a>
-          <i class="fas fa-caret-down arrow"></i>
-        </div>
-
-        <ul class="sub-menu">
-          <li><a href="#" class="link-name">Management</a></li>
-          <li><a href="inventory.html">Inventory</a></li>
-          <li><a href="#">Analytics</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="#">
-          <i class="ri-question-line"></i>
-          <span class="link-name">Help</span>
+          <span class="link-name">Inventory</span>
         </a>
+      </div>
 
-        <ul class="sub-menu blank">
-          <li><a href="#" class="link-name">Help</a></li>
-        </ul>
-      </li>
+      <ul class="sub-menu blank">
+        <li><a href="inventory.html" class="link-name">Inventory</a></li>
+      </ul>
+    </li>
 
-      <li>
+    <li>
+      <a href="#">
+        <i class="ri-question-line"></i>
+        <span class="link-name">Help</span>
+      </a>
+
+      <ul class="sub-menu blank">
+        <li><a href="#" class="link-name">Help</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">
+        <i class="ri-settings-4-line"></i>
+        <span class="link-name">Settings</span>
+      </a>
+
+      <ul class="sub-menu blank">
+        <li><a href="#" class="link-name">Settings</a></li>
+      </ul>
+    </li>
+    
+    <li>
         <a href="#">
-          <i class="ri-settings-4-line"></i>
-          <span class="link-name">Settings</span>
-        </a>
-
-        <ul class="sub-menu blank">
-          <li><a href="#" class="link-name">Settings</a></li>
-        </ul>
-      </li>
-
-      <li>
-        <a href="#">
-          <i class="ri-information-line"></i>
+            <i class="ri-information-line"></i>
           <span class="link-name">About</span>
         </a>
 
         <ul class="sub-menu blank">
           <li><a href="#" class="link-name">About</a></li>
         </ul>
-      </li>
+    </li>
+    
+    <li>
+      <div class="logout">
+            <a href="index.html">
+                <i class="ri-logout-box-line"></i>
+                <span class="link-name">Logout</span>
+            </a>
 
-      <li>
-        <div class="logout">
-          <a href="#">
-            <i class="ri-logout-box-line"></i>
-            <span class="link-name">Logout</span>
-          </a>
+            <ul class="sub-menu blank">
+                <li><a href="index.html" class="link-name">Logout</a></li>
+            </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+  
 
-          <ul class="sub-menu blank">
-            <li><a href="#" class="link-name">Logout</a></li>
-          </ul>
-        </div>
-      </li>
-    </ul>
-  </div>
-
-  <div class="home-section">
-    <div class="home-content">
-      <i class="fas fa-bars"></i>
-      <span class="text">BAKA 360: FARM-TO-MARKET CATTLE MANAGEMENT SYSTEM</span>
+<div class="home-section">
+<div class="home-content">
+  <i class="fas fa-bars"></i>
+  <span class="text">BAKA 360: FARM-TO-MARKET CATTLE MANAGEMENT SYSTEM</span>
     </div>
     <div class="main--content">
         <div class="header--wrapper">
@@ -158,32 +162,32 @@
         <button id="addDataBtn">Add Data</button>
 
         <div id="popupForm" class="popup">
-            <span class="close" onclick="closeForm()">&times;</span>
-            <h2>Enter Data</h2>
-            <form action="/process-form" method="post">
-              <label for="dataInput">Batch ID</label>
-              <input type="number" id="numericInput" required name="numericData" placeholder="Enter Batch ID">
-  
-              <label for="numericInput">Age:</label>
-              <input type="number" id="numericInput" required name="numericData" placeholder="Enter Age">
-  
-              <label for="healthStatusSelect">Health Status</label>
-              <select id="healthStatusSelect" required name="data" placeholder="Select Status">\
-                <option value="Excellent">Excellent</option>
-                <option value="Good">Good</option>
-                <option value="Fair">Fair</option>
-                <option value="Poor">Poor</option>
-              </select>
+          <span class="close" onclick="closeForm()">&times;</span>
+          <h2>Enter Data</h2>
+          <form action="/process-form" method="post">
+            <label for="dataInput">Batch ID</label>
+            <input type="number" id="idData" required name="numericData" placeholder="Enter Batch ID">
 
-              <label for="beefQualitySelect">Beef Quality</label>
-              <select id="beefQualitySelect" required name="data" placeholder="Select Quality">
-                <option value="Excellent">Excellent</option>
-                <option value="Good">Good</option>
-                <option value="Fair">Fair</option>
-                <option value="Poor">Poor</option>
-              </select>
-              <button type="submit">Submit</button>
-            </form>
+            <label for="numericInput">Age:</label>
+            <input type="number" id="ageData" required name="numericData" placeholder="Enter Age">
+
+            <label for="healthStatusSelect">Health Status</label>
+            <select id="healthStatusSelect" required name="data" placeholder="Select Status">\
+              <option value="Excellent">Excellent</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Poor">Poor</option>
+            </select>
+
+            <label for="beefQualitySelect">Beef Quality</label>
+            <select id="beefQualitySelect" required name="data" placeholder="Select Quality">
+              <option value="Excellent">Excellent</option>
+              <option value="Good">Good</option>
+              <option value="Fair">Fair</option>
+              <option value="Poor">Poor</option>
+            </select>
+            <button type="submit">Submit</button>
+          </form>
         </div>
         <br>
         <div class="data"> 
@@ -264,39 +268,98 @@
 
     </div>
 </div>
-<script>
-        function openForm() {
-            document.getElementById("popupForm").style.display = "block";
-        }
-        function closeForm() {
-            document.getElementById("popupForm").style.display = "none";
-        }
-        document.getElementById("addDataBtn").addEventListener("click", openForm);
-</script>
-<script>
-  const firebaseConfig = {
-        apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
-        authDomain: "bsis3a-appdev.firebaseapp.com",
-        databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
-        projectId: "bsis3a-appdev",
-        storageBucket: "bsis3a-appdev.appspot.com",
-        messagingSenderId: "815624012761",
-        appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
-        measurementId: "G-DM6R45V78E"
-      };
+<script>function openForm() {
+  document.getElementById("popupForm").style.display = "block";
+}
 
-        popupForm.addEventListener("submit", (e) => { e.preventDefault();
-          const numericData = document.getElementById("numericInput").value; 
-          const healthStatus = document.getElementById("healthStatusSelect").value; 
-          const beefQuality = document.getElementById("beefQualitySelect").value; 
-          
-          database.ref("batches").push({ numericData, healthStatus, beefQuality, }); 
-          
-          closeForm(); }); 
-        $(document).ready(function () {
-        $('table').DataTable();
-        });
+function closeForm() {
+  document.getElementById("popupForm").style.display = "none";
+}
+
+document.getElementById("addDataBtn").addEventListener("click", openForm);
+
+$(document).ready(function () {
+          $('table').DataTable();
+      });
 </script>
-  <script src="nav.js"></script>
+<script>
+        let bakadata;
+
+document.getElementById("popupForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+          database.ref("batches").push({
+              idData: document.getElementById("idData").value,
+              ageData: document.getElementById("ageData").value,
+              healthStatus: document.getElementById("healthStatusSelect").value,
+              beefQuality: document.getElementById("beefQualitySelect").value,
+          });
+          closeForm();
+      });
+
+    Btn.addEventListener('click', () => {
+    container.classList.add("active");
+});
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { getDatabase, get, set, ref, child } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+import { getAuth, batches } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+const firebaseConfig = {
+      apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+      authDomain: "bsis3a-appdev.firebaseapp.com",
+      databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+      projectId: "bsis3a-appdev",
+      storageBucket: "bsis3a-appdev.appspot.com",
+      messagingSenderId: "815624012761",
+      appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+      measurementId: "G-DM6R45V78E"
+    };
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase();
+const auth = getAuth(app);
+const dbref = ref(db);
+
+let idData = document.getElementById('idData');
+let ageData = document.getElementById('ageData');
+let healthStatus = document.getElementById('healthStatusSelect');
+let beefQuality = document.getElementById('beefQualitySelect');
+let popupForm = document.getElementById('popupForm');\
+
+let batches = evt => {
+    evt.preventDefault();
+    batches(auth, idData.value, ageData.value, healthStatus.value, beefQuality.value)
+    .then((bakadata)=>{
+        console.log(bakadata);
+        set(ref(db, 'val' + bakadata.user.uid), { 
+            batchid: idData.value,
+            age : ageData.value,
+            healthStatus: healthStatus.value,
+            beefQuality: beefQuality.value,
+            last_login : Date.now()
+        })
+        get(child(dbref, 'val/' + bakadata.user.uid)).then((snapshot)=>{ 
+                if(snapshot.exists()){
+                    sessionStorage.setItem("batches", JSON.stringify(bakadata.user)); 
+                    alert('Data successfully added.');
+                    window.location.href = 'inventory.html'; 
+                }
+        })
+    })
+    .catch((error)=>{
+        alert(error.message);
+        console.log(error.code);
+        console.log(error.message);
+    })
+}
+
+popupForm.addEventListener('submit', batches);
+
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+      // Get a reference to the database service
+      database = firebase.database();
+</script>
+  <script src="userdashboard.js"></script>
 </body>
 </html>
