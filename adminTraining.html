@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAKA360: The Development and Integration of Farm-to-Market Cattle Management System</title>
+
+<style>
+  body {
+    background-color: #ffffff;
+    font-family: poppins:
+    color: #333;
+  }
+
+  #uploadContainer {
+    padding: 10px; color: #fff; border: 10px; border-radius:8px; outline: none; background: #7A5E53; 
+  }
+
+  #uploadContainer:hover {
+    background: black;
+    background-color: #523D38;
+  }
+
+  #deleteContainerInput {
+    width: 750px;
+  height: 200px;
+  }
+
+  #deleteContainer {
+    padding: 10px; color: #fff; border: 10px; border-radius:8px; outline: none; background: #7A5E53; 
+  }
+
+  #deleteContainer:hover {
+    background: black;
+    background-color: #523D38;
+  }
+
+</style>
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+
+  <main>
+
+    <h1>
+        <center>ADMIN</center>
+    </h1>
+    <section id="adminSection">
+      <center><h2>Admin Section - Upload Text</h2></center>
+      <form id="adminForm">
+        <center><textarea id="textAreaInput" rows="15" cols="100" placeholder="Enter text"></textarea></center><br>
+        <center><button type="button" id="uploadContainer">Upload Text Container</button></center><br>
+        <center><input type="text" id="deleteContainerInput" placeholder="Enter text to delete"></center><br>
+        <center><button type="button" id="deleteContainer">Delete Container</button></center>
+      </form>
+    </section>
+  </main>
+  <script type="module">
+    import {initializeApp} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import {getDatabase, ref, push, get, remove, onValue} from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+    authDomain: "bsis3a-appdev.firebaseapp.com",
+    databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+    projectId: "bsis3a-appdev",
+    storageBucket: "bsis3a-appdev.appspot.com",
+    messagingSenderId: "815624012761",
+    appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+    measurementId: "G-DM6R45V78E"
+    };
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase();
+
+
+
+    const adminForm = document.querySelector("#adminForm");
+    const textAreaInput = document.querySelector("#textAreaInput");
+    const deleteContainerInput = document.querySelector("#deleteContainerInput");
+    const uploadContainerButton = document.querySelector("#uploadContainer");
+    const deleteContainerButton = document.querySelector("#deleteContainer");
+    const contentDisplay = document.querySelector("#contentDisplay");
+
+    let containerKey;
+
+    const uploadContainer = () => {
+      const containerContent = textAreaInput.value.trim();
+
+      if (containerContent) {
+        const containerRef = ref(db, "mixedContainers/");
+        push(containerRef, {
+          content: containerContent,
+        })
+          .then((snapshot) => {
+            containerKey = snapshot.key;
+            alert("Text container uploaded successfully!");
+            textAreaInput.value = ""; // Clear the input area
+          })
+          .catch((error) => {
+            alert("Error uploading text container: " + error.message);
+          });
+      } else {
+        alert("Please enter text to upload");
+      }
+    };
+
+    const deleteContainer = () => {
+      const contentToDelete = deleteContainerInput.value.trim();
+
+      if (contentToDelete) {
+        const containersRef = ref(db, "mixedContainers/");
+
+        // Retrieve all containers and filter locally based on content
+        get(containersRef)
+          .then(snapshot => {
+            const containers = snapshot.val();
+            const containerToDelete = Object.keys(containers).find(key => containers[key].content === contentToDelete);
+
+            if (containerToDelete) {
+              const containerRefToDelete = ref(db, `mixedContainers/${containerToDelete}`);
+
+              return remove(containerRefToDelete);
+            } else {
+              throw new Error("Container not found");
+            }
+          })
+          .then(() => {
+            alert("Container deleted successfully!");
+            deleteContainerInput.value = ""; // Clear the input field
+          })
+          .catch((error) => {
+            alert("Error deleting container: " + error.message);
+          });
+      } else {
+        alert("Please enter valid content to delete a container");
+      }
+    };
+
+    uploadContainerButton.addEventListener("click", uploadContainer);
+    deleteContainerButton.addEventListener("click", deleteContainer);
+  </script>
+
+</body>
+
+</html>
