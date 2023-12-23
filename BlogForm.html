@@ -165,8 +165,8 @@
 
         <ul class="sub-menu">
           <li><a href="#" class="link-name">Blogs</a></li>
-          <li><a href="#">New Blog Post</a></li>
-          <li><a href="blog.html">Saved Blogs</a></li>
+          <li><a href="blog.html">Blogs</a></li>
+          <li><a href="BlogForm.html">Post New Blog</a></li>
         </ul>
       </li>
 
@@ -271,7 +271,80 @@
       <button type="submit" href="/">Submit</button>
     </div>
   </form>
-  
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js"; // Import the Realtime Database functions
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+      authDomain: "bsis3a-appdev.firebaseapp.com",
+      databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+      projectId: "bsis3a-appdev",
+      storageBucket: "bsis3a-appdev.appspot.com",
+      messagingSenderId: "815624012761",
+      appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+      measurementId: "G-DM6R45V78E"
+    };
+
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const form = document.querySelector('form.decor');
+  const titleInput = form.querySelector('input[placeholder="Title"]');
+  const authorInput = form.querySelector('input[placeholder="Authors Name"]');
+  const descriptionTextarea = form.querySelector('textarea');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent the default form submission
+
+    // Get the values from the form fields
+    const title = titleInput.value;
+    const authorName = authorInput.value;
+    const description = descriptionTextarea.value;
+
+    // Get a reference to the database
+    const db = getDatabase(app);
+
+    // Reference to your Firebase database and push the data
+    const blogRef = ref(db, 'blogs'); // Reference to the 'blogs' node
+
+    // Push data to Firebase
+    push(blogRef, {
+      title: title,
+      author: authorName,
+      description: description
+    }).then(() => {
+      // Clear form fields after successful submission
+      titleInput.value = '';
+      authorInput.value = '';
+      descriptionTextarea.value = '';
+
+      // You can also add a success message or redirect the user to another page
+      alert('Blog post submitted successfully!');
+    }).catch(error => {
+      console.error('Error submitting the blog:', error);
+      alert('Error submitting the blog post. Please try again.');
+    });
+  });
+});
+Now, with these changes:
+
+Ensure that the Firebase Realtime Database rules are set to allow writes from your web client's domain. For testing purposes, you can set the rules to allow all writes:
+json
+Copy code
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+
+  </script>
+
   <script src="script.js"></script>
   <script src="adminDashboard.js"></script>
   <script src="userDashboard.js"></script>
