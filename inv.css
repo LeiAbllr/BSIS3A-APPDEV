@@ -1,12 +1,18 @@
 .main--content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: #3D2B29;
-    padding: 1rem;
-    color: #F6F6F6;
+  background-color: #3D2B29;
+  color: #F6F6F6;
+  padding: 20px;
 }
 
+.header--wrapper {
+  background-color: #090606;
+  text-align: center;
+  padding: 20px;
+  color: #F9F6F6;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
 .header--title {
     background-color: #090606;
     text-align: center;
@@ -83,8 +89,8 @@ select{
 }
 
 table {
-    width: 100%;
-    border: 1px solid #000000;
-    color: #F6F6F6;
-    background-color: #3D2B29;
+  width: 100%;
+  border: 1px solid #000000;
+  color: #F6F6F6;
+  background-color: #3D2B29;
 }
