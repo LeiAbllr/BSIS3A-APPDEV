@@ -19,11 +19,7 @@ header {
   padding: 20px;
 }
 
-.container2 {
-  background-color: #ebebeb;
-  border: 10px;
-  border-radius: 8px;
-}
+
 
 .btn {
   padding: 10px;
@@ -88,72 +84,4 @@ h2 {
 
 #four {
   background-color: #ffffff;
-}
-
-/* Benefits part */
-.container1 {
-  display: flex;
-}
-
-/* Main Section */
-.main {
-  position: relative;
-  padding: 20px;
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-
-}
-
-.main-top {
-  width: 100%;
-  text-align: center;
-  font-size: 25px;
-}
-
-.main-skills {
-  display: flex;
-  margin-top: 20px;
-}
-
-.main-skills .card {
-  width: 25%;
-  margin: 10px;
-  background: #ffff;
-  text-align: center;
-  border-radius: 15px;
-  padding: 10px;
-  filter: drop-shadow(-3px 4px 30px rgba(0, 0, 0, 0.25));
-
-}
-
-.main-skills .card h3 {
-  margin: 10px;
-  text-transform: capitalize;
-}
-
-.main-skills .card p {
-  font-size: 12px;
-}
-
-.main-skills .card button {
-  background-color: #7A5E53;
-  color: #fffefe;
-  opacity: 3;
-  padding: 7px 15px;
-  border-radius: 5px;
-  margin-top: 15px;
-  cursor: pointer;
-  font-family: 'Poppins', sans-serif;
-  transition: 0.3s;
-
-}
-
-.card:hover button {
-  background-color: #523D38;
-  color: #ffffff;
-}
-
-.main-skills .card i {
-  font-size: 22px;
-  padding: 10px;
 }
