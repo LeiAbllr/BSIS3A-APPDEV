@@ -282,82 +282,67 @@ $(document).ready(function () {
           $('table').DataTable();
       });
 </script>
-<script>
-        let bakadata;
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, push, get, remove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-document.getElementById("popupForm").addEventListener("submit", function (e) {
-          e.preventDefault();
-          database.ref("batches").push({
-              idData: document.getElementById("idData").value,
-              ageData: document.getElementById("ageData").value,
-              healthStatus: document.getElementById("healthStatusSelect").value,
-              beefQuality: document.getElementById("beefQualitySelect").value,
-          });
+  const firebaseConfig = {
+    apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
+    authDomain: "bsis3a-appdev.firebaseapp.com",
+    databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
+    projectId: "bsis3a-appdev",
+    storageBucket: "bsis3a-appdev.appspot.com",
+    messagingSenderId: "815624012761",
+    appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
+    measurementId: "G-DM6R45V78E"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase();
+
+  const popupForm = document.getElementById("popupForm");
+  const idDataInput = document.getElementById("idData");
+  const ageDataInput = document.getElementById("ageData");
+  const healthStatusSelect = document.getElementById("healthStatusSelect");
+  const beefQualitySelect = document.getElementById("beefQualitySelect");
+
+  const submitButton = document.querySelector("#popupForm button");
+
+  let containerKey;
+
+  const submitForm = () => {
+    const idData = idDataInput.value.trim();
+    const ageData = ageDataInput.value.trim();
+    const healthStatus = healthStatusSelect.value.trim();
+    const beefQuality = beefQualitySelect.value.trim();
+
+    if (idData && ageData && healthStatus && beefQuality) {
+      const containerRef = ref(db, "batches/");
+      push(containerRef, {
+        idData,
+        ageData,
+        healthStatus,
+        beefQuality
+      })
+        .then((snapshot) => {
+          containerKey = snapshot.key;
+          alert("Data submitted successfully!");
           closeForm();
-      });
-
-    Btn.addEventListener('click', () => {
-    container.classList.add("active");
-});
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
-import { getDatabase, get, set, ref, child } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
-import { getAuth, batches } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
-
-const firebaseConfig = {
-      apiKey: "AIzaSyAxXCA6dABzQq7ZUPifdgqwfnwxFOCuNGo",
-      authDomain: "bsis3a-appdev.firebaseapp.com",
-      databaseURL: "https://bsis3a-appdev-default-rtdb.firebaseio.com",
-      projectId: "bsis3a-appdev",
-      storageBucket: "bsis3a-appdev.appspot.com",
-      messagingSenderId: "815624012761",
-      appId: "1:815624012761:web:4d5cc8b6649f0b72548fc8",
-      measurementId: "G-DM6R45V78E"
-    };
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase();
-const auth = getAuth(app);
-const dbref = ref(db);
-
-let idData = document.getElementById('idData');
-let ageData = document.getElementById('ageData');
-let healthStatus = document.getElementById('healthStatusSelect');
-let beefQuality = document.getElementById('beefQualitySelect');
-let popupForm = document.getElementById('popupForm');\
-
-let batches = evt => {
-    evt.preventDefault();
-    batches(auth, idData.value, ageData.value, healthStatus.value, beefQuality.value)
-    .then((bakadata)=>{
-        console.log(bakadata);
-        set(ref(db, 'val' + bakadata.user.uid), { 
-            batchid: idData.value,
-            age : ageData.value,
-            healthStatus: healthStatus.value,
-            beefQuality: beefQuality.value,
-            last_login : Date.now()
         })
-        get(child(dbref, 'val/' + bakadata.user.uid)).then((snapshot)=>{ 
-                if(snapshot.exists()){
-                    sessionStorage.setItem("batches", JSON.stringify(bakadata.user)); 
-                    alert('Data successfully added.');
-                    window.location.href = 'inventory.html'; 
-                }
-        })
-    })
-    .catch((error)=>{
-        alert(error.message);
-        console.log(error.code);
-        console.log(error.message);
-    })
-}
+        .catch((error) => {
+          alert("Error submitting data: " + error.message);
+        });
+    } else {
+      alert("Please fill in all fields");
+    }
+  };
 
-popupForm.addEventListener('submit', batches);
+  const closeForm = () => {
+    popupForm.style.display = "none";
+  };
 
-      // Initialize Firebase
-      firebase.initializeApp(firebaseConfig);
-  
-      database = firebase.database();
+  submitButton.addEventListener("click", submitForm);
+</script>
+
 </script>
   <script src="userDashboard.js"></script>
 </body>
