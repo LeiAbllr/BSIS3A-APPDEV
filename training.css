@@ -1,18 +1,7 @@
-*{
+body {
+  font-family: poppins;
   margin: 0;
   padding: 0;
-  outline: none;
-  border: none;
-  text-decoration: none;
-  box-sizing: border-box;
-
-}
-body{
-  background: #F2E4C7;
-}
-.container{
-  display: flex;
-}
 
 header {
   background-color: #f1f1f1;
