@@ -1,9 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Reproduction Training for Cattle Management</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Trainings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="training.css">
+  <!--font awesome-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!--css file-->
+  <link rel="stylesheet" href="adminDashboard.css">
+  <link rel="stylesheet" href="userDashboard.css">
+</head>
+
+<body>
+  <div class="sidebar close">
+    <div class="logo">
+      <i class="ri-store-3-fill"></i>
+      <span class="logo-name">BAKA360</span>
+    </div>
+
+    <ul class="nav-list">
+      <li>
+        <a href="#">
+          <i class="ri-dashboard-2-line"></i>
+          <span class="link-name">Dashboard</span>
+        </a>
+
+        <ul class="sub-menu blank">
+          <li><a href="adminDashboard.html/userDashboard.html" class="link-name">Dashboard</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="icon-link">
+          <a href="#">
+            <i class="ri-article-line"></i>
+            <span class="link-name">Blogs</span>
+          </a>
+          <i class="fas fa-caret-down arrow"></i>
+        </div>
+
+        <ul class="sub-menu">
+          <li><a href="#" class="link-name">Blogs</a></li>
+          <li><a href="BlogForm.html">New Blog Post</a></li>
+          <li><a href="blog.html">Saved Blogs</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="icon-link">
+          <a href="#">
+            <i class="ri-presentation-fill"></i>
+            <span class="link-name">Courses</span>
+          </a>
+          <i class="fas fa-caret-down arrow"></i>
+        </div>
+
+        <ul class="sub-menu">
+          <li><a href="#" class="link-name">Courses</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Post New Course</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="icon-link">
+          <a href="#">
+            <i class="ri-presentation-fill"></i>
+            <span class="link-name">Trainings</span>
+          </a>
+          <i class="fas fa-caret-down arrow"></i>
+        </div>
+
+        <ul class="sub-menu">
+          <li><a href="#" class="link-name">Trainings</a></li>
+          <li><a href="training.html">Trainings</a></li>
+          <li><a href="adminTraining.html">Post New Trainings</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="icon-link">
+          <a href="#">
+            <i class="ri-briefcase-4-line"></i>
+            <span class="link-name">Management</span>
+          </a>
+          <i class="fas fa-caret-down arrow"></i>
+        </div>
+
+        <ul class="sub-menu">
+          <li><a href="#" class="link-name">Management</a></li>
+          <li><a href="inventory.html">Inventory</a></li>
+          <li><a href="#">Analytics</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="ri-question-line"></i>
+          <span class="link-name">Help</span>
+        </a>
+
+        <ul class="sub-menu blank">
+          <li><a href="#" class="link-name">Help</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="ri-settings-4-line"></i>
+          <span class="link-name">Settings</span>
+        </a>
+
+        <ul class="sub-menu blank">
+          <li><a href="#" class="link-name">Settings</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="ri-information-line"></i>
+          <span class="link-name">About</span>
+        </a>
+
+        <ul class="sub-menu blank">
+          <li><a href="#" class="link-name">About</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="logout">
+          <a href="form.html">
+            <i class="ri-logout-box-line"></i>
+            <span class="link-name">Logout</span>
+          </a>
+
+          <ul class="sub-menu blank">
+            <li><a href="form.html" class="link-name">Logout</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+ 
  <style>
     body {
       font-family: poppins;
@@ -106,5 +254,9 @@
   </div>
   
  </div>
+
+  <script src="script.js"></script>
+  <script src="adminDashboard.js"></script>
+  <script src="userDashboard.js"></script>
 </body>
 </html>
